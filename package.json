@@ -1,9 +1,28 @@
 {
+  "scripts": {
+    "build": "webpack",
+    "build:android": "npm run build && cap sync",
+    "watch": "webpack serve",
+    "icons": "npx @capacitor/assets generate --android --iconBackgroundColor '#cf00a6' --iconBackgroundColorDark '#cf00a6' --splashBackgroundColor '#cf00a6' --splashBackgroundColorDark '#cf00a6'"
+  },
   "dependencies": {
-    "@capacitor/core": "^6.1.2"
+    "@capacitor/core": "^6.1.2",
+    "@fontsource/roboto": "^5.0.14",
+    "@fontsource/turret-road": "^5.0.21",
+    "@mysten/sui": "^1.6.0",
+    "@mysten/suins": "^0.3.0",
+    "css-loader": "^7.1.2",
+    "elm": "^0.19.1-6",
+    "elm-webpack-loader": "^8.0.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
     "@capacitor/android": "^6.1.2",
-    "@capacitor/cli": "^6.1.2"
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^6.1.2",
+    "elm-reloader": "^1.0.0",
+    "webpack-dev-server": "^5.0.4"
   }
 }
