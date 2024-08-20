@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">warp</string>
-    <string name="title_activity_main">warp</string>
+    <string name="app_name">Warp</string>
+    <string name="title_activity_main">Warp</string>
     <string name="package_name">net.tarbh.warp</string>
     <string name="custom_url_scheme">net.tarbh.warp</string>
 </resources>
