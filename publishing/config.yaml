@@ -1,0 +1,51 @@
+publisher:
+  name: Tarbh
+  address: 8XCMUz7sShehraptZymbQZ3fBJ8fvHdhLqu8VtWigmQt
+  website: https://tarbh.net/
+  email: admin@tarbh.net
+  media:
+    - purpose: icon
+      uri: ./media/tarbh.png
+app:
+  name: Warp
+  address: FnfBHDj79peFsWhbMvMEsJQ8KCrFKztRTAh6KD51uwVh
+  android_package: net.tarbh.warp
+  urls:
+    license_url: https://solanamobile.com/dapp-store-tos
+    copyright_url: https://solanamobile.com/dapp-store-tos
+    privacy_policy_url: https://solanamobile.com/privacy-policy
+    website: https://tarbh.net/
+  media:
+    - purpose: icon
+      uri: ./media/warp.png
+release:
+  address: EqLVKfeDEJNXWAD8RhM4SkNXGD9gE1nnPxVXj4bjo3JK
+  media:
+    - purpose: icon
+      uri: ./media/warp.png
+    - purpose: screenshot
+      uri: ./media/screenshots/1.png
+    - purpose: screenshot
+      uri: ./media/screenshots/2.png
+    - purpose: screenshot
+      uri: ./media/screenshots/3.png
+    - purpose: screenshot
+      uri: ./media/screenshots/4.png
+  files:
+    - purpose: install
+      uri: ../android/app/release/app-release.apk
+  catalog:
+    en-US:
+      name: Warp
+      short_description: Multichain Seed Vault access.
+      long_description: Unlock multichain Seed Vault experiences using Warp.
+      new_in_version: Get started with Warp.
+      saga_features: Utilise the Saga Seed Vault in new ways.
+solana_mobile_dapp_publisher_portal:
+  testing_instructions: 'Interact with Warp using any Seed Vault enabled device. Code: https://github.com/ronanyeah/warp'
+lastSubmittedVersionOnChain:
+  address: EqLVKfeDEJNXWAD8RhM4SkNXGD9gE1nnPxVXj4bjo3JK
+  version_code: 1
+  apk_hash: 7ZiUpblC4C3n/CN4HaO7OSe25lLAXcVNjbjyyLK1pv0=
+lastUpdatedVersionOnStore:
+  address: EqLVKfeDEJNXWAD8RhM4SkNXGD9gE1nnPxVXj4bjo3JK
