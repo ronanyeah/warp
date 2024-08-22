@@ -1,6 +1,5 @@
 module Main exposing (main)
 
-import Array
 import Browser
 import Ports
 import Types exposing (..)

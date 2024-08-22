@@ -22,6 +22,7 @@
     "@capacitor/android": "^6.1.2",
     "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^6.1.2",
+    "@solana-mobile/dapp-store-cli": "^0.9.5",
     "elm-reloader": "^1.0.0",
     "webpack-dev-server": "^5.0.4"
   }

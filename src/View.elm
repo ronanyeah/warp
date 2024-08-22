@@ -9,7 +9,6 @@ import FormatNumber
 import FormatNumber.Locales exposing (usLocale)
 import Helpers.View exposing (style, when, whenAttr)
 import Html exposing (Html)
-import Html.Attributes exposing (src)
 import Maybe.Extra exposing (unwrap)
 import Types exposing (..)
 

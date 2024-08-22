@@ -1,6 +1,5 @@
 module Types exposing (Flags, Model, Msg(..))
 
-import Array exposing (Array)
 import Ports exposing (..)
 
 
