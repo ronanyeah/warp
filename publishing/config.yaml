@@ -11,9 +11,9 @@ app:
   address: FnfBHDj79peFsWhbMvMEsJQ8KCrFKztRTAh6KD51uwVh
   android_package: net.tarbh.warp
   urls:
-    license_url: https://solanamobile.com/dapp-store-tos
-    copyright_url: https://solanamobile.com/dapp-store-tos
-    privacy_policy_url: https://solanamobile.com/privacy-policy
+    license_url: https://github.com/ronanyeah/warp/blob/master/publishing/policies/LICENSE
+    copyright_url: https://github.com/ronanyeah/warp/blob/master/publishing/policies/LICENSE
+    privacy_policy_url: https://github.com/ronanyeah/warp/blob/master/publishing/policies/PRIVACY.md
     website: https://tarbh.net/
   media:
     - purpose: icon
