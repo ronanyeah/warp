@@ -19,7 +19,7 @@ app:
     - purpose: icon
       uri: ./media/warp.png
 release:
-  address: EqLVKfeDEJNXWAD8RhM4SkNXGD9gE1nnPxVXj4bjo3JK
+  address: 2cmCMydsvZFqjJ4mMyecRbobgkQbmJXEYkzKQcgRnR61
   media:
     - purpose: icon
       uri: ./media/warp.png
@@ -44,8 +44,8 @@ release:
 solana_mobile_dapp_publisher_portal:
   testing_instructions: 'Interact with Warp using any Seed Vault enabled device. Code: https://github.com/ronanyeah/warp'
 lastSubmittedVersionOnChain:
-  address: EqLVKfeDEJNXWAD8RhM4SkNXGD9gE1nnPxVXj4bjo3JK
-  version_code: 1
-  apk_hash: 7ZiUpblC4C3n/CN4HaO7OSe25lLAXcVNjbjyyLK1pv0=
+  address: 2cmCMydsvZFqjJ4mMyecRbobgkQbmJXEYkzKQcgRnR61
+  version_code: 2
+  apk_hash: iVwobSpKn22KTHxVI5avGbQyM36LdOQNegy4+iQTQhc=
 lastUpdatedVersionOnStore:
-  address: EqLVKfeDEJNXWAD8RhM4SkNXGD9gE1nnPxVXj4bjo3JK
+  address: 2cmCMydsvZFqjJ4mMyecRbobgkQbmJXEYkzKQcgRnR61
