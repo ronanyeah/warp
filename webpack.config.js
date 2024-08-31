@@ -1,5 +1,6 @@
 const { resolve } = require("path");
 const webpack = require("webpack");
+const metadata = require("./package.json");
 
 const publicFolder = resolve("./public");
 
@@ -59,6 +60,7 @@ module.exports = (env) => {
     plugins: [new webpack.NoEmitOnErrorsPlugin(),
       new webpack.DefinePlugin({
         __DEV: devMode,
+        __VERSION: `"${metadata.version}"`,
       }),
     ],
   };

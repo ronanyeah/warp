@@ -18,7 +18,7 @@ main =
 
 
 init : Flags -> ( Model, Cmd Msg )
-init _ =
+init flags =
     ( { seeds = []
       , activeSeed = Nothing
       , amount = 0.25
@@ -27,6 +27,7 @@ init _ =
       , priceInProgress = False
       , recipient = ""
       , sig = Nothing
+      , version = flags.version
       }
     , Cmd.none
     )

@@ -47,16 +47,18 @@ view model =
                , model.seeds
                     |> List.map
                         (\seed ->
-                            [ text ("▶  " ++ seed.name)
+                            [ [ text ("▶  " ++ seed.name)
+                              ]
+                                |> paragraph []
                             , [ text "Select"
-                                    |> pillBtn (Just <| FetchSeed seed) []
+                                    |> pillBtn (Just <| FetchSeed seed) [ Font.size 17 ]
                               , text "Remove"
                                     |> btn (Just <| Deauth seed.authToken)
                                         [ Font.underline
                                         , Font.size 15
                                         ]
                               ]
-                                |> row [ spacing 15 ]
+                                |> row [ spacing 10 ]
                             ]
                                 |> row [ width fill, spaceEvenly ]
                         )
@@ -73,8 +75,22 @@ view model =
                 |> when (List.isEmpty model.seeds |> not)
              , text "Authorize new seed"
                 |> pillBtn (Just <| FetchSeeds) [ centerX ]
+             , [ [ img "./github.png" [ height <| px 20 ]
+                 , text "View Code"
+                    |> el [ Font.size 20, Font.underline ]
+                 ]
+                    |> row [ spacing 10 ]
+                    |> (\elem ->
+                            newTabLink []
+                                { url = "https://github.com/ronanyeah/warp"
+                                , label = elem
+                                }
+                       )
+               , text <| "v" ++ model.version
+               ]
+                |> row [ width fill, spaceEvenly, alignBottom ]
              ]
-                |> column [ width fill, spacing 20 ]
+                |> column [ width fill, height fill, spacing 20 ]
             )
             (\seed ->
                 [ [ [ [ text "Selected Seed:"
@@ -190,7 +206,7 @@ view model =
 pillAttrs : List (Attribute msg)
 pillAttrs =
     [ Background.color grey
-    , paddingXY 20 10
+    , paddingXY 10 5
     , Border.shadow
         { offset = ( 2, 2 )
         , color = black
@@ -267,7 +283,7 @@ grey =
 
 mainFont : Attribute msg
 mainFont =
-    Font.family [ Font.typeface "Roboto" ]
+    Font.family [ Font.typeface "Montserrat" ]
 
 
 titleFont : Attribute msg

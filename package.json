@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@capacitor/core": "^6.1.2",
-    "@fontsource/roboto": "^5.0.14",
+    "@fontsource/montserrat": "^5.0.19",
     "@fontsource/turret-road": "^5.0.21",
     "@mysten/sui": "^1.6.0",
     "@mysten/suins": "^0.3.0",

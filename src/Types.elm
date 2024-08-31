@@ -12,11 +12,13 @@ type alias Model =
     , selectInProgress : Bool
     , txInProgress : Bool
     , priceInProgress : Bool
+    , version : String
     }
 
 
 type alias Flags =
-    {}
+    { version : String
+    }
 
 
 type Msg

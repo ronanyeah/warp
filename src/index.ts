@@ -1,5 +1,5 @@
 import "@fontsource/turret-road/400.css";
-import "@fontsource/roboto/400.css";
+import "@fontsource/montserrat/400.css";
 
 const { Elm } = require("./Main.elm");
 
@@ -23,6 +23,8 @@ import { SuinsClient } from "@mysten/suins";
 
 // @ts-ignore
 const DEV: boolean = __DEV;
+// @ts-ignore
+const VERSION: string = __VERSION;
 
 const provider = new SuiClient({
   url: "https://fullnode.mainnet.sui.io:443",
@@ -36,7 +38,7 @@ const suinsClient = new SuinsClient({
 (async () => {
   const app: ElmApp = Elm.Main.init({
     node: document.getElementById("app"),
-    flags: {},
+    flags: { version: VERSION },
   });
 
   app.ports.authorizeSeeds.subscribe(() =>
