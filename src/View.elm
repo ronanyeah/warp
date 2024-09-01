@@ -104,7 +104,10 @@ view model =
                         |> row [ width fill, spaceEvenly ]
                   , [ text "Sui Address:"
                         |> el [ Font.bold ]
-                    , text (String.left 14 seed.pubkey ++ "..." ++ String.right 14 seed.pubkey)
+                    , [ text (String.left 11 seed.pubkey ++ "..." ++ String.right 11 seed.pubkey)
+                      , img "./clipboard.png" [ width <| px 18 ]
+                      ]
+                        |> row [ spacing 10 ]
                         |> btn (Just <| Copy seed.pubkey) []
                     ]
                         |> column [ spacing 5 ]
