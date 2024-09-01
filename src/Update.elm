@@ -17,6 +17,11 @@ update msg model =
             , Cmd.none
             )
 
+        SetView v ->
+            ( { model | view = v }
+            , Cmd.none
+            )
+
         AuthedCb xs ->
             ( { model | seeds = xs }
             , Cmd.none

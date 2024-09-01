@@ -130,55 +130,123 @@ view model =
                         , padding 10
                         , Border.width 2
                         ]
-                , [ text "Transfer SUI"
-                        |> el [ Font.bold ]
-                  , [ img "./arrow.png" [ rotate (degrees 180), height <| px 50 ]
-                        |> btn (Just <| MoveAmount -0.25) []
-                    , model.amount
-                        |> FormatNumber.format
-                            { usLocale
-                                | decimals = FormatNumber.Locales.Min 2
-                            }
-                        |> (\x -> x ++ " SUI")
-                        |> text
-                        |> el [ Font.size 30 ]
-                    , img "./arrow.png" [ height <| px 50 ]
-                        |> btn (Just <| MoveAmount 0.25) []
+                , [ [ ( "Transfer", ViewTransfer )
+                    , ( "Bridge", ViewBridge )
+                    , ( "Genesis", ViewGenesis )
                     ]
-                        |> row [ centerX, spacing 20 ]
-                  , Input.text
-                        [ Border.color black ]
-                        { onChange = RecipientChange
-                        , placeholder = Just <| Input.placeholder [] <| text "Wallet address or @SuiNS"
-                        , text = model.recipient
-                        , label =
-                            text "Recipient:"
-                                |> Input.labelAbove [ Font.bold ]
-                        }
-                  , text "Submit tx"
-                        |> pillBtn (Just <| SendSui seed)
-                            [ centerX
-                            , spinner 22
-                                |> el [ paddingXY 15 0, centerY ]
-                                |> when model.txInProgress
-                                |> onRight
-                            ]
-                  , model.sig
-                        |> unwrap none
-                            (\s ->
-                                newTabLink ([ centerX, fadeIn ] ++ pillAttrs)
-                                    { url = "https://suiscan.xyz/mainnet/tx/" ++ s
-                                    , label = text "✅  View transaction"
-                                    }
+                        |> List.map
+                            (\( txt, v ) ->
+                                let
+                                    active =
+                                        v == model.view
+                                in
+                                text txt
+                                    |> (if active then
+                                            el
+                                                [ Background.color black
+                                                , padding 10
+                                                , Font.color white
+                                                ]
+
+                                        else
+                                            btn (Just (SetView v))
+                                                [ padding 10
+                                                ]
+                                       )
                             )
+                        |> row [ Font.bold, Font.size 20 ]
+                  , (let
+                        underCons =
+                            [ img "./construction.png" [ width <| px 35 ]
+                            , text "Coming Soon"
+                                --, text "Under Construction"
+                                |> el
+                                    [ Font.size 24
+                                    , Font.bold
+                                    , Font.color white
+                                    ]
+                            ]
+                                |> row
+                                    [ spacing 10
+                                    , Background.color black
+                                    , padding 10
+                                    ]
+                     in
+                     case model.view of
+                        ViewTransfer ->
+                            [ [ img "./arrow.png" [ rotate (degrees 180), height <| px 50 ]
+                                    |> btn (Just <| MoveAmount -0.25) []
+                              , model.amount
+                                    |> FormatNumber.format
+                                        { usLocale
+                                            | decimals = FormatNumber.Locales.Min 2
+                                        }
+                                    |> (\x -> x ++ " SUI")
+                                    |> text
+                                    |> el [ Font.size 30 ]
+                              , img "./arrow.png" [ height <| px 50 ]
+                                    |> btn (Just <| MoveAmount 0.25) []
+                              ]
+                                |> row [ centerX, spacing 20 ]
+                            , Input.text
+                                [ Border.color black ]
+                                { onChange = RecipientChange
+                                , placeholder = Just <| Input.placeholder [] <| text "Wallet address or @SuiNS"
+                                , text = model.recipient
+                                , label =
+                                    text "Recipient:"
+                                        |> Input.labelAbove [ Font.bold ]
+                                }
+                            , text "Submit tx"
+                                |> pillBtn (Just <| SendSui seed)
+                                    [ centerX
+                                    , spinner 22
+                                        |> el [ paddingXY 15 0, centerY ]
+                                        |> when model.txInProgress
+                                        |> onRight
+                                    ]
+                            , model.sig
+                                |> unwrap none
+                                    (\s ->
+                                        newTabLink ([ centerX, fadeIn ] ++ pillAttrs)
+                                            { url = "https://suiscan.xyz/mainnet/tx/" ++ s
+                                            , label = text "✅  View transaction"
+                                            }
+                                    )
+                            ]
+                                |> column
+                                    [ spacing 15
+                                    , width fill
+                                    ]
+
+                        ViewBridge ->
+                            [ [ img "./solana_mobile.png" [ height <| px 25 ]
+                              , text "X"
+                                    |> el [ centerX ]
+                              , img "./wormhole.png" [ width <| px 170 ]
+                                    |> el [ centerX ]
+                              ]
+                                |> column [ centerX, spacing 10 ]
+                            , underCons
+                                |> el [ centerX ]
+                            ]
+                                |> column [ width fill, spacing 40, padding 20 ]
+
+                        ViewGenesis ->
+                            [ img "./genesis.png" [ height <| px 120, centerX ]
+                            , underCons
+                                |> el [ centerX ]
+                            ]
+                                |> column [ width fill, spacing 20, padding 20 ]
+                    )
+                        |> el
+                            [ Background.color white
+                            , width fill
+                            , padding 15
+                            , Border.width 2
+                            ]
                   ]
-                    |> column
-                        [ spacing 15
-                        , Background.color white
-                        , width fill
-                        , padding 15
-                        , Border.width 2
-                        ]
+                    |> column [ width fill ]
                 ]
                     |> column [ spacing 10, width fill ]
             )

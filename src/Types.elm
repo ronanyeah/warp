@@ -1,4 +1,4 @@
-module Types exposing (Flags, Model, Msg(..))
+module Types exposing (..)
 
 import Ports exposing (..)
 
@@ -13,6 +13,7 @@ type alias Model =
     , txInProgress : Bool
     , priceInProgress : Bool
     , version : String
+    , view : View
     }
 
 
@@ -35,3 +36,10 @@ type Msg
     | SigCb (Maybe String)
     | MoveAmount Float
     | AuthedCb (List SeedAuth)
+    | SetView View
+
+
+type View
+    = ViewTransfer
+    | ViewBridge
+    | ViewGenesis

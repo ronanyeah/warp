@@ -28,6 +28,7 @@ init flags =
       , recipient = ""
       , sig = Nothing
       , version = flags.version
+      , view = ViewTransfer
       }
     , Cmd.none
     )
