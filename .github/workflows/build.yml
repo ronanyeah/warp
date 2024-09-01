@@ -1,0 +1,70 @@
+name: Android Build
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  actions: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Decode Keystore
+      env:
+        ENCODED_KEYSTORE: ${{ secrets.KEYSTORE }}
+      run: |
+        echo $ENCODED_KEYSTORE | base64 -d > keystore.jks
+    
+    - uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'adopt'
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+
+    - uses: android-actions/setup-android@v3
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build app
+      run: npm run build:android
+        
+    - name: Build with Gradle
+      working-directory: ./android
+      env:
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      run: ./gradlew assembleRelease
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: android/app/build/outputs/apk/release/app-release.apk
+        asset_name: app-release.apk
+        asset_content_type: application/vnd.android.package-archive
